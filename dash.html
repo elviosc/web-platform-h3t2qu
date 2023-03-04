@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Importar a biblioteca TailwindCSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/page2.html">Other page</a>
+      <a href="/dash.html" aria-current="page">Dash</a>
+    </nav>
+    <!-- Adicionar o menu de navegação -->
+    <nav class="bg-white shadow mb-4">
+      <div
+        class="container mx-auto px-4 py-2 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <div class="ml-4 flex items-center">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CRAS</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CREAS</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CENTRO POP</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CENTRO DIA</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >MELHOR IDADE</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >FUNDOSOCIAL</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CENTRO DIA AGENOR</a
+            >
+            <a
+              href="#"
+              class="text-gray-600 hover:text-gray-800 font-semibold py-2 px-3"
+              >CEACA</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto py-8">
+      <div class="bg-white rounded-lg shadow overflow-hidden">
+        <!-- Adicionar um elemento canvas para exibir o gráfico -->
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Importar a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Obter o elemento canvas e o contexto 2D para desenhar o gráfico
+      var ctx = document.getElementById('myChart').getContext('2d');
+
+      // Definir os dados a serem exibidos no gráfico
+      var data = {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+        datasets: [
+          {
+            label: 'Atendimentos',
+            data: [120, 80, 140, 100, 160, 120],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+          },
+          {
+            label: 'Encaminhamentos',
+            data: [50, 60, 80, 70, 90, 100],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+          },
+          {
+            label: 'RMA',
+            data: [10, 20, 15, 25, 30, 35],
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: 'rgba(255, 206, 86, 1)',
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Definir as opções do gráfico, como título e legendas
+      var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Quantitativo de atendimentos, encaminhamentos e RMA',
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      };
+
+      // Criar o gráfico usando Chart.js
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options,
+      });
+    </script>
+  </body>
+</html>
